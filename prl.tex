@@ -1,0 +1,143 @@
+\documentclass[a4paper,%            A4 papir size
+               aps,%                Document gets APS layout
+               prl,%                more layout, section numbering is removed
+               amsfonts,%           load AMS fonts
+               amssymb,%            load more AMS symboler
+               amsmath,%            load AMS math (equation environment and so on...)
+               nobibnotes,%         If BibTex is not used, REVTeX should be told to use normal footnotes
+               twocolumn, %         two-column layout
+               twoside,%            to-sided print
+               balancelastpage,%    balancing the last page when using two columns
+               eqsecnum] %          numbering the equations with the sectionnumber
+               {revtex4-1}
+\usepackage[utf8]{inputenc} %       Correct formatting, makes danish letters available
+\usepackage[english]{babel} %       Language
+
+% Place all outher packages you use here i.e. graphicx, subfiles...
+\usepackage{amsmath, amssymb}
+\usepackage{url}
+\usepackage{wrapfig}
+\usepackage{subfiles}
+\usepackage[squaren]{SIunits}
+\usepackage{caption}
+\captionsetup{labelfont={footnotesize,bf},textfont=footnotesize,format=hang,indention=-0.5cm} %makes nicer indents
+\usepackage[normalem]{ulem}
+\usepackage{subfigure}
+\usepackage{lipsum}
+\usepackage{todonotes}
+
+\begin{document}                                % Starts the actual document
+\selectlanguage{english}
+
+\title{Writing articles for Applied statistics \\ a laTeX template} % Title of the document, \\ can be used to generate linebreaks
+\date{November 17, 2016}                                                % Date of the document, \today can be used
+
+% Author on the articles. Add a new line of \author{Name} for each author
+\author{Niccolo Maffezzoli}
+\author{Daniel S.\ Nielsen}
+\author{Troels C.\ Petersen}
+\affiliation{Niels Bohr Institute - Applied statistics - Project 1 group X}   % The authors affiliation
+
+% With REVTeX the abstract must be before \maketitle 
+\begin{abstract}                                              
+The abstract should be a short description of what your article includes, such that the reader can
+determine, if the article is relevant/interesting. Also, key results and possibly conclusions should
+be reported here. The abstract should typically not be longer than 8-10 lines.
+\end{abstract}
+
+\maketitle 
+
+% Resets the counters so references are logical:
+\setcounter{section}{1} %Sets the sectioncounter to 1
+\setcounter{equation}{0} %Sets the equationcounter to 0
+
+
+
+% Begin the sections
+% ------------------------------------------------------------------------------------------ %
+\section{Introduction}
+% ------------------------------------------------------------------------------------------ %
+The two following equations should make it easier for you to obtain expressions for $g$ and start taking measurements.
+In the first experiemnt you will be measuring the period of a pendulum with the length $L$ and calculate $g$ by using the pendulum equation:
+\begin{equation}
+T = 2\pi\sqrt{\frac{L}{g}} \label{eq:Pendul}
+\end{equation}
+This means that $g$ can be determined as:
+\begin{equation}
+g = L \left( \frac{2\pi}{T} \right)^2 \label{eq:Pendul}
+\end{equation}
+
+The second experiment is a ball rolling down an inclined track. Through the laws of energy conservation and the assumption that the
+acceleration is constant, $g$ can be found to be:
+\begin{equation}
+g = \frac{a}{\sin(\theta + \Delta\theta)}\left[1+\frac{2}{5}\frac{R^2}{R^2 - \left(\frac{d}{2}\right)^2}\right] \label{eq:Ball}
+\end{equation}
+where $a$ is the measured acceleration of the center of mass (measured using the distance and time between the light gates), $\theta$ is the angle of the incline with respect to the table, $\Delta \theta$ is the angle of the table, $R$ is the radius of the ball and $d$ is the width of the track it is rolling on. To make figures, see Fig.\ \ref{fig:fit}.
+
+
+% ------------------------------------------------------------------------------------------ %
+\section{Method}
+\subsection{Pendulum}
+\lipsum[1-3]
+
+\subsection{Ball on an incline}
+\lipsum[1-3]
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{NiceFigureExample.pdf}
+\caption{This is a very nice figure. But the data and subsequent fit looks a bit dubious. \label{fig:fit}}
+\end{figure}
+
+
+% ------------------------------------------------------------------------------------------ %
+\section{Results}
+\subsection{Pendulum}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{lrrr}
+    \hline
+    \hline
+Variable	&Value	&Statistical error	&Systematic error\\
+\hline
+\quad	Experiment 1 \\
+\hline
+    Period $T$	&8.1231 s	&0.0942 s	&0.060 $\usk\meter\per\second\squared$\\
+    Length $L$	&8.1231 m	&0.0942 m	&0.060 $\usk\meter\per\second\squared$\\
+    Gravity $g$	&9.887	&0.005 $\usk\meter\per\second\squared$ &\\
+\hline
+\quad	Experiment 2 \\
+\hline 
+    Period $T$	&8.8712 s	&0.0123 s	&0.060 $\usk\meter\per\second\squared$\\ 
+    Length $L$	&8.5812 m	&0.0123 m	&0.060 $\usk\meter\per\second\squared$\\
+    Gravity $g$	&9.9393	&0.006 $\usk\meter\per\second\squared$ &\\    
+    \hline
+    \textbf{Resulting $g$}	&\textbf{9.421}	&\textbf{0.03 $\usk\meter\per\second\squared$} &\\
+    \hline
+    \hline
+  \end{tabular}
+  \caption{Different variables and their uncertainty from the pendulum experiment used to determine $g$, and their impact on $g$. \label{tab:GPen}}
+\end{table}
+
+
+\subsection{Ball on an incline}
+\lipsum[1-3]
+
+
+% ------------------------------------------------------------------------------------------ %
+\section{Discussion}
+
+
+% ------------------------------------------------------------------------------------------ %
+\section{Conclusion}
+
+
+
+% ------------------------------------------------------------------------------------------ %
+\begin{thebibliography}{99}  
+% Literature you can refer to
+\bibitem{Griffiths} D. J. Griffiths, \emph{Introduction to Electrodynamics 3. edition}, (Pearson Education, Inc. 1999)                                 
+\end{thebibliography}
+
+\end{document}                                                % Slut på dokument, alt herefter ignoreres
